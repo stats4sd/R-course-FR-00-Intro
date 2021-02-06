@@ -1,0 +1,645 @@
+---
+title: "Introduction to R"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    df_print: default
+runtime: shiny_prerendered
+description: >
+  Learn about the basic syntax of R.
+---
+
+```{r setup, include=FALSE}
+library(learnr) 
+library(datasets)
+
+data("airquality")
+
+airquality$Month<-factor(airquality$Month,levels=5:9,labels=c("May","June","July","August","September"))
+
+tutorial_options(exercise.timelimit = 60)
+```
+
+## Welcome
+
+In this tutorial, you will learn some of the basic syntax of R. We will look at how to run code, use functions, create objects and produce output.
+
+The topics we will cover in this session are:
+
+* Using R for Calculations
+* Objects in R
+* Errors 
+* (c)oncatenation of values
+* Using Data Frames
+* Functions
+* Missing Values
+* Getting Help
+
+Feel free to complete this workbook at your own pace, to suit your own style. If you want to split your time across multiple sessions the workbook will remember your progress and let you pick up where you left off, providing you are not working in your internet browser's 'incognito mode' and don't delete your browsing history. If you want to reset all of your progress there is a "start over" button in the bottom left corner which will reset all of progress made so far. You can also use your browser to resize the font, or manually resize the window if you want to make the text bigger or smaller. 
+
+The intention is for this course to be accessible to people who may not have ever used any programming languages before. Although, since you have made it this far, we are assuming that you are interested in doing so! We will assume you have some basic knowledge of data and simple statistical methods, but links to other resources will be provided throughout.
+
+There are a *lot* of 'introduction' to R courses which start out with going in depth into data structures and lots of different syntax of R coding. 
+This can be useful, but is often fairly overwhelming to a newcomer to R, and programming, since it can seem like this is not at all applicable to why you are learning R in the first place - usually to work with your own data. It's a bit like learning the details of how a car engine works, when all you really need to know is how to drive it. 
+
+Within this introduction session we will touch on lots of different key topics fairly briefly, so that we can then move on to some more interesting, and hopefully relatable, content. However, if you are interested in going into more detail, particularly if you are coming to R having learnt other programming languages before, then the resources section at the end of this tutorial has some links for you to learn more.   
+
+These tutorials *do not* require you to install R or RStudio on your computer just yet. All the interacting with R for the first few sessions will take place through this workbook format.
+
+Like this:
+
+```{r twotwo, exercise = TRUE}
+2+2
+```
+
+Above this line of text is a window which allows you to write and submit R code. You can write anything in these windows (as long as you are writing R code), but you will find most of them in the main parts of the tutorial have pre-written pieces of R code for you to run or modify. All of the sessions have an exercises section, which will require you to practice writing the code yourself to solve the problems.
+
+If you press the "Run Code" button in the top right, it will run your code and show you the output underneath. If you have made a mistake instead you will see an error. If you haven't modified the code yet, when you press `Run Code` you should hopefully see that 2+2 is equal to 4.
+
+Unless you see a *QUESTION* or *EXERCISE* marked above the code chunk, you won't need to modify what has already been written in the box. However, within these chunks of code you can try anything you like - don't just feel constrained by what the question says. If you want to try something to see what happens - then do! You can always press the 'Start Over' button within an individual chunk to return it to its original state.
+
+## Using R for Calculations
+
+We have seen that R can do `2+2`. More generally, at it's simplest level, R can be used as a calculator, using the `+`,`-`,`*`,`/` and `^` symbols for addition `+`, subtraction `-`, multiplication `*`, division `/` and raising to the power of `^`. 
+
+We can even submit multiple equations all at once for R to evaluate.
+
+```{r twothree, exercise = TRUE}
+1+2
+3*4
+5-6
+7/8
+9^10
+```
+Notice that that this provides 5 lines of output, where each piece of output has a [1] next to it. This is because these are 5 separate commands to R (hence 5 lines of output), each with 1 piece of output (hence the [1]). Later we will see examples where a single call to R has multiple pieces of output.
+
+Unlike in other programming languages we do not need to use a separator between multiple different commands, or explicitly include a written "run" command. As long as we have a *complete* R command on a single line, then R will run the command when it reaches the end of line. And then a new line in the code will denote a new command.
+
+But what if we have an incomplete line? For example
+```{r twtwotwo, exercise = TRUE}
+2+
+  2
+```
+
+This is still OK! Because at the end of the first line R did not see something that was complete, it moved to the next line before running the code.
+
+It's not a good idea to write code like this though! Although there will come times when you have to write a long command, and it can be useful to split across multiple lines.
+
+
+You can combine together calculations in exactly the same way that you would with a scientific calculator.
+
+```{r twothree2, exercise = TRUE}
+
+(2+2)*4/9
+```
+
+Be careful with your placement of brackets! Not all errors in R will cause error messages. Brackets can be a big cause of this. Always check that they have been placed correctly to match what you intend, and that any brackets you open have been closed. It's such a small issue which can cause some very large problems. For example - you could easily have written the formulae from the previous chunk in a number of different ways:
+
+```{r, twothree3, exercise = TRUE}
+(2+2)*4/9
+
+2+2*4/9
+
+(2+2*4)/9
+```
+
+So be very careful with checking you are asking for exactly what you want!
+
+
+## Creating objects in R
+
+The real power of R is not really in just replicating what you can do with a Casio FX83! R is often referred to as an 'object oriented programming language'. That means nearly everything we do in R requires creating, manipulating and processing *objects*.
+
+Within R 'objects' can be quite a lot of different things: datasets, individual numbers or sequences of numbers, formulae, statistical models, pieces of text, plots, images or even maps.
+
+To create an object we need to assign a name to an R command. `<-` is the 'assignment' operator in R used to create objects, and the general usage is `Object.Name <- COMMAND` - before the `<-` we set the name we want for the object, after the `<-` we give the R commands that will create the object. It is the result of the R commands which are stored in the object, not the command itself.
+
+So let's try assigning the result of 2+2 to a new object called `x`:
+
+```{r twofour, exercise=TRUE}
+x<-2+2
+```
+
+This time you can keep pressing *Run Code* as many times as you like, but you will not see any output. This is because when objects are assigned you (usually) do not see any output directly. if we wan to see the result of our R code, we have to explicitly ask R to show us the object by referring to its name. Like so:
+
+```{r x1, exercise=TRUE}
+x<-2+2
+x
+```
+
+In the first line we create the object called `x`, in the second line we ask R to show us the object `x` that was just created.
+
+When giving things names in R it is better to be a bit more informative than using single letters (x,y,z etc.). 
+We can give R objects any name we want to - as long as we follow some few rules:  
+1. No punctuation except `_` and `.`  
+2. No spaces  
+3. Only standard English alphanumeric characters - no accents or non-English alphabets  
+4. Names can include numbers but can't start with numbers  
+
+`sjkfjhskjdhsajsfgldsjghajfhljhgsdlk` is a perfectly valid name we could use, but it would be really stupid. We want our names to be short, clear and memorable
+
+Below are examples of invalid names. We will get errors when we run them:
+```{r spaces2,  exercise=TRUE}
+two+two<-2+2
+```
+
+```{r spaces,  exercise=TRUE}
+two plus two<-2+2
+```
+```{r spacesb,  exercise=TRUE}
+2plus2<-2+2
+```
+The usual error we see when assigning a bad name is "unexpected symbol". But the first example here gives a slightly different error. Because the `+` character has special meaning in R then it is trying to evaluate this code as if it is an addition of `two` and `two`, so we get a an error telling us `two` does not exist.
+
+## Errors
+
+When you come across errors in your code (and you will) the first thing to do is to check carefully what you have submitted. Error messages in R can be a little bit cryptic to decipher, so need a little bit of practice and trial and error to help negotiate. The first things to do are to check carefully for any clues in the error message - it might help point to the specific part of the code where you made a mistake.
+
+A key one to remember is that R is case sensitive - try running this:
+
+```{r cases,  exercise=TRUE}
+x<-2+2
+X
+```
+We do have an object called x but we don't have anything called X. Capitalisation and spelling is vital.
+
+Common sources of errors are things like having brackets in incorrect places; spelling mistakes; misusing or misplacing quotation marks; or using the wrong case (B.S.Q.C). It's also likely you may find problems with sequencing of commands - especially making you sure you load data or packages before you need to use them. You cannot use functions from additional packages without explicitly loading these packages first in sequence. Similarly we cannot use any data called `x` until after we have created a dataset called `x`. 
+
+It's also a good idea to avoid names which are used elsewhere in R as this can cause problems with duplication and/or confusion. For example - R already has the constant pi (3.14159...) built in as a named object called pi
+
+```{r pi, exercise=TRUE}
+pi
+```
+But if we didn't know that - and we created a new object called pi it would over-write this built in object, which could cause problems of a loss of precision. Particularly if we forgot the decimal digits of pi ourselves and created something incorrect!
+
+
+```{r pi2, exercise=TRUE}
+pi <- 3.1435
+pi
+```
+Now we are in trouble if we want to do any calculations based on pi! R is big so there are lots of names used for things, so sometimes it happens but try to avoid as much as possible.
+
+Check your code very carefully for these small details if you run into problems - especially when just starting out, and conducting fairly simple operations, it's very likely you will have made one of these errors. Over time you will make less of these errors, and also find it easier to diagnose the problem when you do, but it can be a little frustrating at first for some users.
+
+## Using objects
+
+Once we have created objects - we can apply mathematical operations on them as well. For example, let's say that we are applying the Pythagoras Theorem - $x^2 + y^2 = z^2$. We want to easily write some code to solve this to give us the hypotenuse of a triangle, `z`,  for any inputs of the other two side lengths, `x` and `y`. We can create objects `x` and `y` and then write the code to solve the equation based on the values that we set to them. 
+
+```{r py1,  exercise=TRUE}
+x<-4
+y<-6
+
+sqrt(x^2 +y^2)
+
+```
+
+Then, if we ever need to solve the Pythagoras equation again, all we need to do is find our code, update the values of x and y - and we can get our solution instantly! 
+
+*QUESTION* Try updating the code below to solving the theorem for a triangle with two sides of length of 10 and 22
+
+```{r pythag, exercise=TRUE}
+x<-4
+y<-6
+
+sqrt(x^2 +y^2)
+```
+
+```{r pythag-solution}
+x<-10
+y<-22
+
+sqrt(x^2 +y^2)
+```
+
+We are using the mathematical function `sqrt()` in this code to obtain the square root of the numbers within the brackets. Again, this is just like a calculator. Other useful mathematic functions like `sin()`,`cos()`,`tan()`,`log()`,`log10()` are all built into R. Note than `log()` refers to the natural logarithm.
+
+```{r classy, exercise=TRUE}
+
+sin(100)
+cos(100)
+tan(100)
+log(100)
+log10(100)
+
+```
+
+
+## (c)oncatenation of values
+
+An extremely common function you will see in R is `c()`. This is a way of *c*ombining, or '*c*oncatenating', multiple items together into a single object, which is called a *vector*.  If we ever need to do any sort of operation on more than one single number, then we will need to be using vectors. So, using `c()`, we can create a vector of the test scores, separated by commas, and assign this to be the object `y`. 
+
+```{r vector,  exercise=TRUE}
+y<-c(4,5,6,7,800)
+y
+```
+Remember that if we don't ask for `y` to be returned, we would not see any output. When coding for real, we don't often ask R to just print out our objects like this, but whilst learning it is good to remind ourselves of how this works. 
+
+
+We can then use this vector of numbers for mathematical operations. For example, we could add 2 to all of those numbers
+
+```{r vector2,  exercise=TRUE}
+y<-c(4,5,6,7,800)
+y+2
+```
+R has taken each of the values from `y` and applied them to the formula we gave it. So the first output refers to the first value of `y` and so on.
+
+More usefully, we could continue with the Pythagoras example from before. Let's say these are hypothetical lengths of one side of a triangle. With the other side (`x`) fixed at 4 and we could then see how long the hypotenuse would be for a range of different `y` values.
+
+```{r py2,  exercise=TRUE}
+x<-4
+y<-c(4,5,6,7,800)
+
+sqrt(x^2 +y^2)
+```
+
+Now we have solved the hypotenuse length for 4 different triangles!
+
+But we should only do this sort of mathematical procedure if    
+* `x` and `y` are both the same length, in which case the first output will be first element of `x` used with the first element of `y`, and so on for each corresponding pair.    
+* Either `x` or `y` are of length 1. Then we have a constant for one of our values and the same operation is carried out for all elements of the longer object.    
+
+
+For example if we tried again with `x<-c(4,5)` we would see a warning message:
+
+### Warnings
+
+```{r py3,  exercise=TRUE}
+x<-c(4,5)
+y<-c(4,5,6,7,800)
+y
+
+sqrt(x^2 +y^2)
+```
+
+
+In this instance what R has done is extended `x` by repeating it to match the length of `y`, but it has also given us a warning message at the same time: `longer object length is not a multiple of shorter object length`. 
+
+Pay close attention whenever you receive warning messages. These messages are slightly different from errors. Errors appear when R cannot evaluate the command you have written, either because the command you have written is incorrect or because the operation you are asking R to do is impossible. Warning messages appear when R is able to evaluate the code you submitted but suspects that that your code is not doing what you think it’s doing. R therefore gives a warning to encourage you to double check that you understand what your code is doing  Sometimes these messages are indeed harmless, but sometimes they can mean that you may have made a mistake in the logic, or the data, behind what you were trying to do. 
+
+In this case we would have avoided the warning message, but obtained the same output, by setting `x` as `x<-c(4,5,4,5,4)`. This would be a much better option to achieve the same result, as for someone reading our code it would be clearer that what have done is what we wanted.
+
+
+Vectors consist of individual items which are all compatible with each other. If we have a vector of numbers all the entries need to be numbers. This is a `numeric` vector. If we have a vector of text, all the entries need to be text this is called a `character` vector. Look what happens when we provide R with a mixture of numbers and characters
+
+```{r mismatch,  exercise=TRUE}
+x<-c(4,5)
+x
+class(x)
+
+y<-c(4,"five",6,"seven")
+y
+class(y)
+
+
+```
+
+`y` is a character vector - and R has converted the `4` and `6` into characters rather than numbers - we can tell this from the quotation marks `""` around the numbers in the output or by checking the result of `class(y)`. This means if we try to use this vector in our example we will run into an error.
+
+
+```{r py4,  exercise=TRUE}
+x<-c(4,5)
+y<-c(4,"five",6,"seven")
+
+sqrt(x^2 +y^2)
+```
+
+This error is telling us that `y` is non-numeric. Therefore it cannot do any mathematical calculations based on y - even for those elements within y which which we entered as numbers originally. If anything in a vector is not a number, this turns everything within that vector into a character.
+
+
+## Data 
+
+More often than not we don't want to work with just vectors, but instead we want to work with data. Datasets are essentially a combination of multiple vectors. Outside of R we would probably refer to these as 'columns' or 'variables' within the data. 
+
+Each column will be of its own class (e.g. "Name" would be a character, "Age" would be a number, "Date of Birth" would be a date). And each of these columns has the same number of entries. We could create a dataset in R by manually entering each of our columns using the `c()` function and then combining our columns together. This is not a very practical option! We will learn more about importing data from Excel, and other formats later in this course. For the first few modules we will be using pre-imported datasets to practice with.
+
+When working with data in R, we need to assign our data to be an object. Depending on how you read in data it will probably be stored as a 'data frame', although there are other formats for working with data in R as well.
+
+
+Let's take a look at the built in dataset `airquality` which has daily air quality measurements taken from New York in 1973. The contents of this data are embedded below.
+
+
+```{r,echo=FALSE}
+DT::datatable(airquality)
+```
+
+You can see this data has columns for Ozone (`Ozone`), Solar Radiation (`Solar.R`), Wind Speed (`Wind`), Temperature (`Temp`), Month (`Month`) and Day (`Day`).
+
+As with any object in R - to look at it in the output window we we need to refer to it by its name
+```{r aq,  exercise=TRUE}
+airquality
+```
+
+Running the name of the object simply prints out the object contents.
+
+If we just want to look at one of the columns individually - e.g. temperature - then we use the `$` symbol to separate the name of the data from the name of the column.
+
+So `airquality$Temp` tells R to access the column `Temp` from within the dataset `airquality`
+```{r aq2,  exercise=TRUE}
+airquality$Temp
+```
+
+Remember earlier when we always saw a [1] at the start of your output? This time because there are lots of entries (153 in total) whenever R breaks the output onto a new line there is a different number in square brackets at the start of that line. (The exact number may depend on your screen resolution as to how many lines are needed!). This tells you how many elements into the sequence the first entry on each line is.
+
+Just looking at the column by itself this is not especially useful, but we need to be able to refer to each column when we start to use functions on our data to manipulate, present and analyse our results. All of this is done using functions.
+
+## Functions
+A function is an object that applies a particular operation. You can do basic maths in R without functions (like 2+2) but to do anything more fun or useful we will need functions. The name of the function is always followed by brackets `()`, and inside the brackets we tell R how to apply the function or what to apply the function on. 
+
+
+We've seen some functions already - the `c` function, for combining items together, and the `class` function, to show the class of an object. We've also talked about some of the mathematical functions - like `sqrt()` and `sin()`.
+
+Let's see what happens when we apply the functions on our data:
+
+```{r clss,  exercise=TRUE}
+class(airquality)
+```
+That makes sense.
+
+But what if we tried to use `c()` with the data frame?
+```{r caq,  exercise=TRUE}
+c(airquality)
+```
+
+This is almost certainly not going to be useful, as it effectively 'takes' apart our data frame and shows us each column one by one. 
+
+A useful function to know is the function `summary()`. Let's use it on the `airquality` dataset:
+
+```{r cc, exercise=TRUE}
+summary(airquality)
+```
+
+We use the function name `summary` and then inside the brackets we tell it what we want to provide the summary of - in this case the data frame `airquality`.
+
+You can see that this function provides summary statistics for all of the columns in our dataset
+
+R is an 'object-oriented programming language'. This means that the same function may do slightly different things, depending on what sort of object it is applied on. We can already see this somewhat from the output of `summary(airquality)`. The `Month` column shows us frequencies for each month. This column is being treated as a categorical variable (the 'factor' class in R); the other columns provide summary statistics (mean, median, min, max and the lower and upper quartiles). because they are 'numeric' variables.
+For example we can also run the function `summary` on just the `Temp` column, and we will see summary statistics for just this column.
+
+```{r sum2, exercise=TRUE}
+summary(airquality$Temp)
+```
+
+The individual summary statistic functions also generally have sensible names, `mean`, `median`, `min` and `max`, and work in a similar way:
+
+```{r sum3, exercise=TRUE}
+mean(airquality$Temp)
+min(airquality$Temp)
+max(airquality$Temp)
+median(airquality$Temp)
+```
+
+Some functions require more than one *argument*. The arguments are the different components we tell the function - in the case of `mean(airquality$Temp)` the argument is the variable we want to calculate the mean of. Most functions have a mixture of required arguments and optional arguments which if not specified will revert to a default setting. Arguments have names, although we dont always have to use them, particularly with simple functions where we only use one argument. With the `mean` function we could have obtained identical output by using the command `mean(x=airquality$Temp)` because the name of the argument for the column we wish to calculate the mean of is `x`.
+To obtain the 1st and 3rd quartiles, as in the `summary` function, we need to use the `quantile` function. As well as variable we wish to obtain the quantile from, we need to tell it an argument for `probs` to tell it which quantile we want to calculate. So for the lower quantile, this is the 25% point. R only ever deals with decimal numbers rather than percentages so we need to set this to 0.25.
+
+```{r quantile, exercise=TRUE}
+quantile(airquality$Temp,probs = 0.25)
+```
+
+To obtain both the upper and lower quantiles, we can use the `c()` function within the quantile function to request both the 25% and the 75% quantile at the same time.
+
+```{r quant2, exercise=TRUE}
+quantile(airquality$Temp,probs = c(0.25,0.75))
+```
+
+## Missing values
+
+When looking at the data and running the summary function you may have noticed that there are missing values within some columns of this dataset. Missing values are coded as `NA` within R. You may have already seen from previous outputs, but the `Ozone` column from the `airquality` data has 37 missing values. This isn't a problem with the `summary` function, as one of the things it summarises is how many missing values exist within the data.
+
+```{r sum50, exercise=TRUE}
+summary(airquality$Ozone)
+
+```
+But look what happens with the mean, min, max and median functions.
+
+```{r sum5, exercise=TRUE}
+mean(airquality$Ozone)
+min(airquality$Ozone)
+max(airquality$Ozone)
+median(airquality$Ozone)
+```
+
+If there are any missing values, then by default these functions tell us that they cannot determine the value of the mean, min, max and median. 
+Unfortunately, in R different functions handle missing values in different ways, so it can sometimes feel a bit inconsistent. Some functions, like `summary` automatically remove missing values and calculate results ignoring those values. Other functions, like `mean`, need to explicitly be told how to handle missing values. For `mean` to calculate the mean ignoring the missing values we need to add an additional argument `na.rm=TRUE`, telling R to remove missing (NA) values.
+
+```{r sum6, exercise=TRUE}
+mean(airquality$Ozone,na.rm=TRUE)
+```
+
+
+## Applying functions incorrectly
+
+If we tried to use the mean function on the `Month` column, we would see some slightly strange results:
+```{r sum7, exercise=TRUE}
+mean(airquality$Month)
+```
+
+Here we see another example of a warning message - because the format of the month is not 'numeric' (a number) or 'logical' (a class for a binary column which can only have values of `TRUE` or `FALSE`), we see the mean of month is NA. There was no error in the code, but R is warning us that it thinks it is a bit strange that we want the mean of a 'factor' (categorical) column as it cannot do this. We have to think carefully about making sure we are asking R to do something sensible with the data we have, and whether our data is stored an appropriate format. For example if the months were coded as numbers (4 for April, 5 for May and so on) - then we could have calculated a mean value. Just because R lets you do something, doesn't mean this is necessarily something that is good, correct or useful to our actual analysis.
+
+*Question* Predict what you would then expect to see from the following line of code before pressing run.
+
+```{r median,exercise=TRUE}
+median(airquality$Month)
+```
+
+Sometimes things in R can be a little inconsistent! 
+
+This is one of the reasons why a large number of people use functions and packages in R from what is known as the 'tidyverse', rather than using 'Base' R (which is R in the form it comes when it is downloaded). 
+
+The objective of the tidyverse is for all components to share common design, philosophy, grammar and data structures, to avoid inconsistencies like in the previous example. A large proportion of this course will follow the tidyverse functions and styles, particularly the upcoming sessions on graphics using `ggplot2` and data manipulation using `dplyr`.  
+
+We will learn more about this as the course progresses, but if you are taking this course having previously learnt how to use R in a slightly different way then do not worry - the way you learnt is (probably) correct and this way is also correct. There are lots of different ways to do the same thing in R; the most important thing is to focus on whether you are able to get the output you want.
+
+## Help
+
+There is an extensive R help menu for every function in R. Within R you can get help by using a question mark followed by the name of the function. 
+
+```{r example2, exercise=TRUE}
+?mean
+```
+
+
+(Note that the formatting doesn't embed particularly well into this interactive workbook! You can view a better formatted version of this help on the R Documentation website: https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean). 
+
+There are always worked examples along with each function, which are often more useful than the help menus themselves. This can be found using `example()`
+
+
+```{r example, exercise=TRUE}
+example(mean)
+```
+But ? and ```example``` only work if you already know the name of the function!
+
+The help menu in R is written for a very technical perspective, and is very useful once you have become familiar with R. However, it is generally not very helpful as a learning tool for new users, as you often will not know what function you need to use and the search results can be overwhelming for simple terms. The number one resource for almost all R programmers is something you might have heard of before: Google.
+https://www.google.co.uk/search?q=How+do+I+calculate+a+mean+in+R
+
+At no point when programming are you ever expected to remember everything off the top of your head - refer back to previous examples you have worked on, or search for help, whenever you do get stuck. And please do ask us for help at any point in the course if you are not clear on any of the points, or become stuck on the exercises.
+
+There are lots of resources online for R, again these can be of variable quality or of differing usefulness depending on your knowledge and experience levels. Throughout the course we will try to highlight specific resources that we think are useful to help you learn.
+
+
+## Resources
+
+As mentioned, there are lots of resources online covering similar topics to this first introduction in great detail. A lot of this comprises of things you will learn more about, or only come to realise the usefulness of, once you have started using R more frequently. Here are three suggestions for further reading, graded by difficulty, which will recap some of the same content but in all cases go into a bit more detail in certain areas.
+
+Easy:
+
+<a href="https://rforcats.net/" target="_blank">R for Cats</a>  
+Covers more different types of data structures in R than this introduction, but at a fairly gentle pace
+
+Medium:
+
+<a href="https://bookdown.org/rdpeng/rprogdatascience/r-nuts-and-bolts.html" target="_blank">Chapter 4 of "R Programming for Data Science" (R Nuts and Bolts)</a>  
+Chapters 1 & 2 were suggested as pre-course material, so also worth a review. We've skipped the content which is covered in chapter 3 for now, but we will come back to it later.
+
+Hard:
+<a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf" target="_blank">The 'official' Introduction to R </a>. This goes into a lot of technical detail about different object types, and internal structures within R. More or less everything that you might possibly need to know is covered in this, but lots of it you don't need to know or remember to start your journey into R whilst much of what is mentioned has largely been superseded with useful add on packages.
+
+## Quiz
+
+*Question 1*
+```{r Q1, echo=FALSE}
+question("Which of the following is the definition of an object in R",
+  answer("An object is a structure which could contain values, data or plots",correct=TRUE),
+  answer("An object is a statement used to perform a particular task",message = "This is a 'function'"),
+  answer("An object provides the commands used in R",message = "This is a 'script' or the 'syntax'"),
+         allow_retry=TRUE)
+
+```
+
+
+
+*Question 2*
+
+```{r Q2, echo=FALSE}
+question("Select all of the following which could be a valid object name for some data about earthquakes in R",
+  answer("EarthquakeData",correct = TRUE),
+   answer("earthquakedata",correct = TRUE),
+  answer("Earthquake Data",message="No spaces allowed."),
+  answer("uRtHkWaKeS",correct = TRUE,message="Just because a name is valid, like uRtHkWaKeS, does not mean it is a good idea to name our data this!"),
+  answer("2020earthquakes",message="Cannot start with a number."),
+  answer("2020_earthquakes",message="Cannot start with a number"),
+  answer("Earthquakes_2020",correct = TRUE),
+  answer("d1",correct = TRUE),
+         allow_retry=TRUE)
+
+```
+
+
+*Question 3*
+```{r Q31, echo=FALSE}
+question("Which of the following statements is correct",
+  answer("Data in R cannot contain any missing values"),
+  answer("You cannot calculate the mean of a variable containing missing values in R"),
+  answer("Missing values in R are coded as -99",message="Missing values are coded as NA"),
+  answer("The na.rm=TRUE argument is one way of handling missing values within some functions",correct = TRUE),
+         allow_retry=TRUE)
+
+```
+
+
+
+
+
+There is a dataset within R called `quakes`. This data shows the latitude, longitude, depth, magnitude of earthquakes occurring in the ocean around Fiji since 1964, as well as the number of different stations reporting the earthquake.
+
+```{r,echo=FALSE}
+DT::datatable(quakes)
+```
+
+*Question 4*
+
+```{r Q3, echo=FALSE}
+question("If I wanted to see just the magnitude values of this data, what R command should I run?",
+   answer("quakes[mag]",message="Square brackets are important in R; but we haven't learnt about them yet, and this is not what they do!"),
+   answer("quakes$mag",correct = TRUE),
+  answer("column(quakes,mag)",message = "We have not learnt about a function called column(), and this is not what it does"),
+  answer("mag(quakes)",message="There is no function called mag()"),
+         allow_retry=TRUE)
+         
+         
+```
+*Question 5* 
+
+```{r,echo=FALSE}
+summary(quakes)
+```
+
+
+ 
+```{r Q4, echo=FALSE}
+
+question("Which command has given me the output shown above?",
+   answer("c(quakes)",message = "This would deconstruct the data frame rather than provide summary statistics"),
+   answer("mean(quakes)",message = "This would give an NA result. quakes is of class data.frame, so we cant calculate a mean"),
+  answer("summary(quakes)",correct = TRUE),
+  answer("stats(quakes)",message = "This is not a commonly used function"),
+         allow_retry=TRUE)
+```
+
+
+
+
+## Exercises
+
+### Question 1:
+I am trying to use R as a calculator, and am receiving an error. Can you spot my error and update the code?
+```{r ex1, exercise=TRUE}
+
+(42-5/(88+6)
+
+```
+
+
+### Question 2
+
+This question will use the same earthquakes dataset from the quiz, showing the magnitude of earthquakes occuring in the ocean around Fiji since 1964, as well as the number of different stations reporting the earthquake. This has been loaded into the R sessions as a data frame called `quakes` 
+
+```{r,echo=FALSE}
+DT::datatable(quakes)
+```
+
+
+### Question 2a
+Write a command to determine the largest magnitude (`mag`) earthquake recorded?
+
+```{r ex2, exercise=TRUE}
+
+
+```
+
+### Question 2b
+Write a command to determine the smallest depth (`depth`) below surface that an earthquake was recorded?
+
+```{r ex22b, exercise=TRUE}
+
+```
+
+
+### Question 2c
+I would like to obtain the standard deviation of the earthquake magnitude column from the `quakes` dataset. See if you can find the function for standard deviation in R (we have not mentioned it in the course workbook so far) and then apply it to the relevant column
+```{r ex4, exercise=TRUE}
+
+```
+
+
+### Question 3
+I am again using the `airquality` data and I am now interested in looking at the `Solar.R` variable. I know that there can sometimes be very extreme outlying values for this variable, so rather than looking at the minimum and maximum I would instead like to look at the 5th percentile and the 95th percentile. Find these two values using the `quantile` function.
+
+```{r ex3, exercise=TRUE}
+
+```
+
+
+### Question 4:
+A task I am sure you remember from school is to solve a quadratic equation using the formula $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$.
+Write some R code to find the two values of x when $x^2-9x+19=0$ . 
+
+As a reminder, in the quadratic equation formula from this particular example `a` would be 1; `b` would be -9 and `c` would be 19
+
+
+```{r quadratic, exercise=TRUE}
+
+
+
+```
+
