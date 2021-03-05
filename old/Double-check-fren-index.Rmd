@@ -31,21 +31,21 @@ Les sujets que nous aborderons au cours de cette session sont les suivants:
 * Objets en R
 * Erreurs 
 * concaténation des valeurs
-* Utilisation des tableaux de données (data frame)
+* Utilisation des bases de données
 * Fonctions
 * Valeurs manquantes
 * Obtenir de l'aide avec R
 
-N'hésitez pas à compléter ce tutoriel à votre rythme. Si vous souhaitez répartir votre temps sur plusieurs sessions, le tutoriel se souviendra de vos progrès et vous permettra de reprendre là où vous vous êtes arrêté, à condition que vous ne travailliez pas en mode "incognito" de votre navigateur Internet et que vous ne supprimiez pas votre historique de navigation. Si vous souhaitez réinitialiser tous vos progrès, un bouton "recommencer" se trouve dans la partie inférieur gauche de votre écran, qui réinitialisera tous les progrès réalisés jusqu'à présent. Vous pouvez également utiliser votre navigateur pour redimensionner la police, ou redimensionner manuellement la fenêtre si vous souhaitez agrandir ou réduire le texte. 
+N'hésitez pas à compléter ce manuel à votre rythme, selon votre propre rythme. Si vous souhaitez répartir votre temps sur plusieurs sessions, le manuel se souviendra de vos progrès et vous permettra de reprendre là où vous vous êtes arrêté, à condition que vous ne travailliez pas en mode "incognito" de votre navigateur Internet et que vous ne supprimiez pas votre historique de navigation. Si vous souhaitez réinitialiser tous vos progrès, un bouton "recommencer" se trouve dans la partie inférieur gauche de votre écran, qui réinitialisera tous les progrès réalisés jusqu'à présent. Vous pouvez également utiliser votre navigateur pour redimensionner la police, ou redimensionner manuellement la fenêtre si vous souhaitez agrandir ou réduire le texte. 
 
-L'objectif est de rendre ce cours accessible à des personnes qui n'ont peut-être jamais utilisés de langage de programmation auparavant.Puisque vous êtes arrivés jusqu'ici, nous supposons que vous êtes intéressés à le faire ! Nous supposerons que vous avez des connaissance basique sur  l'utilisation de données et de méthodes statistiques simples, mais des liens vers d'autres ressources seront fournis tout au long du cours.
+L'objectif est de rendre ce cours accessible à des personnes qui n'ont peut-être jamais utilisés de langage de programmation auparavant.Puisque vous êtes arrivés jusqu'ici, nous supposons que vous êtes intéressés à le faire ! Nous supposerons que vous avez une connaissance des bases des données et des méthodes statistiques simples, mais des liens vers d'autres ressources seront fournis tout au long du cours.
 
 Il existe un *grand* nombre de cours "d'introduction" à R qui commencent par un examen approfondi des structures de données et de nombreuses syntaxes différentes du codage R.
-Cela peut être utile, mais c'est souvent un frein au nouveau venu dans le domaine de R, et de la programmation, car il peut sembler que cela ne s'applique pas du tout à la raison pour laquelle vous apprenez R en premier lieu - généralement pour travailler avec vos propres données. C'est un peu comme si vous appreniez les détails du fonctionnement d'un moteur de voiture, alors que tout ce que vous devez savoir, c'est comment la conduire.
+Cela peut être utile, mais c'est souvent assez accablant pour un nouveau venu dans le domaine de R, et de la programmation, car il peut sembler que cela ne s'applique pas du tout à la raison pour laquelle vous apprenez R en premier lieu - généralement pour travailler avec vos propres données. C'est un peu comme si vous appreniez les détails du fonctionnement d'un moteur de voiture, alors que tout ce que vous devez savoir, c'est comment la conduire.
 
-Au cours de cette séance d'introduction, nous aborderons assez brièvement de nombreux sujets clés différents, afin de pouvoir ensuite passer à un contenu plus intéressant et, nous l'espérons, plus parlant. Toutefois, si vous souhaitez entrer dans les détails, en particulier si vous venez à R et que vous avez déjà appris d'autres langages de programmation, la section des ressources à la fin de ce tutoriel contient des liens qui vous permettront d'en savoir plus.   
+Au cours de cette séance d'introduction, nous aborderons assez brièvement de nombreux sujets clés différents, afin de pouvoir ensuite passer à un contenu plus intéressant et, nous l'espérons, plus relatable. Toutefois, si vous souhaitez entrer dans les détails, en particulier si vous venez à R et que vous avez déjà appris d'autres langages de programmation, la section des ressources à la fin de ce tutoriel contient des liens qui vous permettront d'en savoir plus.   
 
-Ces tutoriels *n'exigent pas* que vous installiez R ou RStudio sur votre ordinateur pour l'instant. Toute l'interaction avec R pour les premières sessions se fera par le biais des tutoriels 
+Ces tutoriels *n'exigent pas* que vous installiez R ou RStudio sur votre ordinateur pour l'instant. Toute l'interaction avec R pour les premières sessions se fera par le biais de ce format de classeur.
 
 Comme ceci :
 
@@ -109,7 +109,7 @@ Faites donc très attention à vérifier que vous demandez exactement ce que vou
 
 ## Création d'objets dans R
 
-La vrai puissance de R n'est pas vraiment de simplement reproduire ce que vous pouvez faire avec une calculatrice Casio FX83 ! R est souvent considéré comme un "langage de programmation orienté objet". Cela signifie que presque tout ce que nous faisons dans R nécessite la création, la manipulation et le traitement *d' objets*.
+Le vrai pouvoir de R n'est pas vraiment de simplement reproduire ce que vous pouvez faire avec un Casio FX83 ! R est souvent considéré comme un "langage de programmation orienté objet". Cela signifie que presque tout ce que nous faisons dans R nécessite la création, la manipulation et le traitement *d' objets*.
 
 Dans R, les "objets" peuvent être des choses très différentes : des ensembles de données, des nombres individuels ou des séquences de nombres, des formules, des modèles statistiques, des morceaux de texte, des graphiques, des images ou même des cartes.
 
@@ -121,7 +121,7 @@ Essayons donc d'assigner le résultat de 2+2 à un nouvel objet appelé "x" :
 x<-2+2
 ```
 
-Cette fois, vous pouvez continuer à appuyer sur *Run Code* autant de fois que vous le souhaitez, mais vous ne verrez aucun résultat. Si nous voulons voir le résultat de notre code R, nous devons demander explicitement à R de nous montrer l'objet en faisant référence à son nom. Comme ceci :
+Cette fois, vous pouvez continuer à appuyer sur *Run Code* autant de fois que vous le souhaitez, mais vous ne verrez aucun résultat. Si nous voulons voir le résultat de notre code R, nous devons demander explicitement à R de nous montrer l'objet en faisant référence à son nom. C'est ainsi :
 
 ```{r x1, exercise=TRUE}
 x<-2+2
@@ -132,7 +132,7 @@ Dans la première ligne, nous créons l'objet appelé "x", dans la deuxième lig
 
 Lorsque l'on donne des noms à des objets dans R, il est préférable d'être un peu plus informatif que d'utiliser des lettres isolées (x,y,z etc.). 
 Nous pouvons donner aux objets R le nom que nous voulons - à condition de respecter quelques règles :  
-1. Pas de ponctuation sauf "\_" et ".".  
+1. Pas de ponctuation sauf "_" et "._".  
 2. Pas d'espaces  
 3. Uniquement des caractères alphanumériques anglais standard - pas d'accents ni d'alphabets non anglais  
 4. Les noms peuvent inclure des chiffres mais ne peuvent pas commencer par des chiffres
@@ -164,7 +164,7 @@ X
 ```
 Nous avons un objet appelé x, mais nous n'avons rien appelé X. La capitalisation et l'orthographe sont essentielles.
 
-Les sources d'erreurs les plus courantes sont les parenthèses mal placées, les erreurs d'orthographe, la mauvaise utilisation ou le mauvais placement des guillemets ou l'utilisation de la mauvaise casse. Il est également probable que vous rencontriez des problèmes d'enchaînement des commandes - en particulier pour vous assurer que vous chargez les données ou les packages avant de devoir les utiliser. Vous ne pouvez pas utiliser les fonctions de packages supplémentaires sans charger explicitement ces packages d'abord dans l'ordre. De même, nous ne pouvons pas utiliser de données appelées "x" tant que nous n'avons pas créé un ensemble de données appelé "x". 
+Les sources d'erreurs les plus courantes sont les parenthèses mal placées, les fautes d'orthographe, la mauvaise utilisation ou le mauvais placement des guillemets ou l'utilisation de la mauvaise casse (B.S.Q.C). Il est également probable que vous rencontriez des problèmes d'enchaînement des commandes - en particulier pour vous assurer que vous chargez les données ou les packages avant de devoir les utiliser. Vous ne pouvez pas utiliser les fonctions de packages supplémentaires sans charger explicitement ces packages d'abord dans l'ordre. De même, nous ne pouvons pas utiliser de données appelées "x" tant que nous n'avons pas créé un ensemble de données appelé "x". 
 
 C'est également une bonne idée d'éviter les noms qui sont utilisés ailleurs dans R car cela peut causer des problèmes de duplication et/ou de confusion. Par exemple - R a déjà la constante pi (3.14159...) intégrée dans un objet nommé appelé pi
 
@@ -178,7 +178,7 @@ Mais si nous ne le savions pas - et nous avons créé un nouvel objet appelé pi
 pi <- 3.1435
 pi
 ```
-Maintenant, nous sommes dans le pétrin si nous voulons faire des calculs basés sur pi ! R est grand, donc il y a beaucoup de noms utilisés pour les objets, donc cela arrive parfois, mais essayez d'éviter autant que possible.
+Maintenant, nous sommes dans le pétrin si nous voulons faire des calculs basés sur pi ! R est grand, donc il y a beaucoup de noms utilisés pour les choses, donc cela arrive parfois, mais essayez d'éviter autant que possible.
 
 Vérifiez très attentivement votre code pour ces petits détails si vous rencontrez des problèmes - surtout au début, et en effectuant des opérations assez simples, il est très probable que vous aurez fait une de ces erreurs. Avec le temps, vous en ferez moins, et il vous sera plus facile de diagnostiquer le problème lorsque vous le ferez, mais cela peut être un peu frustrant au début pour certains utilisateurs.
 
@@ -233,7 +233,7 @@ Une fonction extrêmement courante que vous verrez dans R est `c()`. C'est une f
 y<-c(4,5,6,7,800)
 y
 ```
-N'oubliez pas que si nous ne demandons pas explicitement que R nous afficher la valeur de "y", nous ne verrons rien. Lorsque nous codons pour de vrai, nous ne demandons pas souvent à R de simplement afficher nos objets comme ceci, mais tout en apprenant, il est bon de se rappeler comment cela fonctionne. 
+N'oubliez pas que si nous ne demandons pas le retour de "y", nous ne verrons pas de sortie. Lorsque nous codons pour de vrai, nous ne demandons pas souvent à R de simplement imprimer nos objets comme ceci, mais tout en apprenant, il est bon de se rappeler comment cela fonctionne. 
 
 
 Nous pouvons alors utiliser ce vecteur de nombres pour des opérations mathématiques. Par exemple, nous pourrions ajouter 2 à tous ces nombres
@@ -309,14 +309,14 @@ Cette erreur nous dit que "y" est non numérique. Il ne peut donc pas faire de c
 
 ## Données 
 
-Le plus souvent, nous ne voulons pas travailler avec de simples vecteurs, mais plutôt avec des jeux de données. Les jeux de données sont essentiellement une combinaison de plusieurs vecteurs. En dehors de R, nous les appellerions probablement "colonnes" ou "variables". 
+Le plus souvent, nous ne voulons pas travailler avec de simples vecteurs, mais plutôt avec des données. Les ensembles de données sont essentiellement une combinaison de plusieurs vecteurs. En dehors de R, nous les appellerions probablement "colonnes" ou "variables" dans les données. 
 
-Chaque colonne a sa propre classe (par exemple, "Nom" sera un caractère, "Âge" sera un nombre, "Date de naissance" sera une date). Et chacune de ces colonnes comporte le même nombre de valeurs. Nous pourrions créer un jeu de données dans R en saisissant manuellement chacune de nos colonnes à l'aide de la fonction `c()` et en combinant ensuite nos colonnes ensemble. Ce n'est pas une option très pratique ! Nous en apprendrons plus sur l'importation de données à partir d'Excel, et d'autres formats plus tard dans ce cours. Pour les premiers modules, nous utiliserons des ensembles de données pré-importées pour nous entraîner.
+Chaque colonne aura sa propre classe (par exemple, "Nom" sera un caractère, "Âge" sera un nombre, "Date de naissance" sera une date). Et chacune de ces colonnes comporte le même nombre d'entrées. Nous pourrions créer un ensemble de données dans R en saisissant manuellement chacune de nos colonnes à l'aide de la fonction `c()` et en combinant ensuite nos colonnes ensemble. Ce n'est pas une option très pratique ! Nous en apprendrons plus sur l'importation de données à partir d'Excel, et d'autres formats plus tard dans ce cours. Pour les premiers modules, nous utiliserons des ensembles de données pré-importées pour nous entraîner.
 
-Lorsque nous travaillons avec des données dans R, nous devons assigner nos données comme étant un objet. Selon la façon dont vous lisez les données, elles seront probablement stockées sous forme de "data frame", bien qu'il existe d'autres formats pour travailler avec des données dans R.
+Lorsque nous travaillons avec des données dans R, nous devons assigner nos données comme étant un objet. Selon la façon dont vous lisez les données, elles seront probablement stockées sous forme de "cadre de données", bien qu'il existe d'autres formats pour travailler avec des données dans R.
 
 
-Examinons le jeu de données deja inclu dans R et appele "airquality" (qualité de l'air), qui comporte des mesures quotidiennes de la qualité de l'air prises à New York en 1973. Le contenu de ces données est incorporé ci-dessous.
+Examinons le jeu de données intégré "qualité de l'air", qui comporte des mesures quotidiennes de la qualité de l'air prises à New York en 1973. Le contenu de ces données est incorporé ci-dessous.
 
 
 ```{r,echo=FALSE}
@@ -339,9 +339,9 @@ Ainsi, `airquality$Temp` indique à R d'accéder à la colonne `Temp` depuis l'e
 airquality$Temp
 ```
 
-Vous vous souvenez du moment où l'on voyait toujours un [1] au début de chaque sortie ? Cette fois-ci, comme il y a beaucoup d'entrées (153 au total), chaque fois que R divise la sortie sur une nouvelle ligne, il y a un nombre différent entre crochets au début de cette ligne. (Le nombre exact peut dépendre de la résolution de votre écran en ce qui concerne le nombre de lignes nécessaires !). Cela vous indique a quelle position dans la séquence de l'ensemble des éléments se trouve a première valeur de chaque ligne.
+Vous vous souvenez de l'époque où l'on voyait toujours un [1] au début de votre production ? Cette fois-ci, comme il y a beaucoup d'entrées (153 au total), chaque fois que R divise la sortie sur une nouvelle ligne, il y a un nombre différent entre crochets au début de cette ligne. (Le nombre exact peut dépendre de la résolution de votre écran en ce qui concerne le nombre de lignes nécessaires !) ). Cela vous indique combien d'éléments dans la séquence est la première entrée sur chaque ligne.
 
-Le simple fait de visualiser la colonne en elle-même n'est pas particulièrement utile, mais nous devons pouvoir nous référer à chaque colonne lorsque nous commençons à utiliser des fonctions sur nos données afin de manipuler, présenter et analyser nos résultats. Tout cela se fait à l'aide de fonctions.
+Le simple fait de regarder la colonne en elle-même n'est pas particulièrement utile, mais nous devons pouvoir nous référer à chaque colonne lorsque nous commençons à utiliser des fonctions sur nos données pour manipuler, présenter et analyser nos résultats. Tout cela se fait à l'aide de fonctions.
 
 ## Fonctions
 Une fonction est un objet qui applique une opération particulière. Vous pouvez faire des mathématiques de base dans R sans fonctions (comme 2+2) mais pour faire quelque chose de plus amusant ou utile, nous aurons besoin de fonctions. Le nom de la fonction est toujours suivi de parenthèses `()`, et à l'intérieur des parenthèses nous indiquons à R comment appliquer la fonction ou sur quoi appliquer la fonction. 
@@ -354,33 +354,33 @@ Voyons ce qui se passe lorsque nous appliquons ces fonctions à nos données :
 ```{r clss,  exercise=TRUE}
 class(airquality)
 ```
-R nous sindique que airquality est un data frame (tableau de donnees).
+C'est logique.
 
-Mais si nous essayions d'utiliser `c()` avec ce tableau de données ?
+Mais si nous essayions d'utiliser `c()` avec la fenêtre de données ?
 ```{r caq,  exercise=TRUE}
 c(airquality)
 ```
 
-Cela ne sera certainement pas utile, car cela "démonte" effectivement notre tableau de données et nous montre chaque colonne une par une. 
+Cela ne sera certainement pas utile, car cela "démonte" effectivement notre cadre de données et nous montre chaque colonne une par une. 
 
-Une fonction utile à connaître est la fonction `summary()`. Utilisons-la sur tableau de données "airquality" :
+Une fonction utile à connaître est la fonction `summary()`. Utilisons-la sur l'ensemble de données "qualité de l'air" :
 
 ```{r cc, exercise=TRUE}
 summary(airquality)
 ```
 
-Nous utilisons le nom de la fonction " summary " et nous indiquons entre parenthèses ce que nous voulons résumer - dans ce cas, le tableau de données " airquality ".
+Nous utilisons le nom de la fonction " summary " et nous indiquons entre parenthèses ce que nous voulons fournir comme résumé - dans ce cas, le cadre de données " qualité de l'air ".
 
-Vous pouvez voir que cette fonction fournit des statistiques descriptives pour toutes les colonnes de notre ensemble de données
+Vous pouvez voir que cette fonction fournit des statistiques récapitulatives pour toutes les colonnes de notre ensemble de données
 
-R est un "langage de programmation orienté objet". Cela signifie qu'une même fonction peut faire des choses légèrement différentes, selon le type d'objet sur lequel elle est appliquée. Nous pouvons déjà le voir quelque peu à la sortie de "summary(airquality)`. La colonne "Month" nous indique les fréquences pour chaque mois. Cette colonne est traitée comme une variable catégorielle (la classe " factor" dans R) ; les autres colonnes fournissent des résumés statistiques (moyenne, médiane, min, max et les quartiles inférieur et supérieur). parce qu'il s'agit de variables "numériques".
-Par exemple, nous pouvons également exécuter la fonction "summary" uniquement sur la colonne "Temp", et nous obtiendrons un résumé statistique pour cette seule colonne.
+R est un "langage de programmation orienté objet". Cela signifie qu'une même fonction peut faire des choses légèrement différentes, selon le type d'objet sur lequel elle est appliquée. Nous pouvons déjà le voir quelque peu à la sortie de "summary(airquality)`. La colonne " Month " nous indique les fréquences pour chaque mois. Cette colonne est traitée comme une variable catégorielle (la classe " factor" dans R) ; les autres colonnes fournissent des statistiques sommaires (moyenne, médiane, min, max et les quartiles inférieur et supérieur). parce qu'il s'agit de variables " numériques ".
+Par exemple, nous pouvons également exécuter la fonction "résumé" uniquement sur la colonne "Temp", et nous obtiendrons des statistiques sommaires pour cette seule colonne.
 
 ```{r sum2, exercise=TRUE}
 summary(airquality$Temp)
 ```
 
-La plupart des fonctions servant a faire des calculs statistiques basiques ont aussi généralement des noms parlant, "mean", "median", "min" et "max", et fonctionnent de manière similaire :
+Les fonctions statistiques individuelles de synthèse ont aussi généralement des noms sensibles, "moyen", "médian", "min" et "max", et fonctionnent de manière similaire :
 
 ```{r sum3, exercise=TRUE}
 mean(airquality$Temp)
@@ -390,7 +390,7 @@ median(airquality$Temp)
 ```
 
 Certaines fonctions nécessitent plus d'un *argument*. Les arguments sont les différentes composantes que nous indiquons à la fonction - dans le cas de `mean(airquality$Temp)` l'argument est la variable dont nous voulons calculer la moyenne. La plupart des fonctions ont un mélange d'arguments obligatoires et d'arguments optionnels qui, s'ils ne sont pas spécifiés, reviennent à un paramètre par défaut. Les arguments ont des noms, bien que nous n'ayons pas toujours à les utiliser, en particulier avec les fonctions simples où nous n'utilisons qu'un seul argument. Avec la fonction `mean`, nous aurions pu obtenir une sortie identique en utilisant la commande `mean(x=airquality$Temp)` parce que le nom de l'argument pour la colonne dont nous voulons calculer la moyenne est `x`.
-Pour obtenir les 1er et 3ème quartiles, comme dans la fonction `summary`, nous devons utiliser la fonction `quantile`. En plus de la variable dont nous voulons obtenir le quantile, nous devons lui donner un argument pour les `probs` afin de lui dire quel quantile nous voulons calculer. Pour le quantile inférieur, on voudra indiquer 25%. Mais R ne traite les nombre que comme des nombres décimaux, pas des pourcentages, nous devons donc fixer ce point à 0.25 (et oui, la symbole pour indiquer les decimales, donc on met un point au lieu d'une virgule).
+Pour obtenir les 1er et 3ème quartiles, comme dans la fonction "récapitulative", nous devons utiliser la fonction "quantile". En plus de la variable dont nous voulons obtenir le quantile, nous devons lui donner un argument pour les "probs" afin de lui dire quel quantile nous voulons calculer. Ainsi, pour le quantile inférieur, c'est le point de 25%. R ne traite jamais que des nombres décimaux plutôt que des pourcentages, nous devons donc fixer ce point à 0,25.
 
 ```{r quantile, exercise=TRUE}
 quantile(airquality$Temp,probs = 0.25)
@@ -404,13 +404,13 @@ quantile(airquality$Temp,probs = c(0.25,0.75))
 
 ## Valeurs manquantes
 
-En examinant les données et en utilisant la fonction `summary`, vous avez peut-être remarqué qu'il manque des valeurs dans certaines colonnes de ce jeu de données. Les valeurs manquantes sont codées avec "NA" dans R. Vous l'avez peut-être déjà vu dans les sorties précédentes, mais la colonne "Ozone" des données "airquality" comporte 37 valeurs manquantes. Ce n'est pas un problème avec la fonction `summary`, car elle résume entre autres le nombre de valeurs manquantes dans les données.
+En examinant les données et en exécutant la fonction de résumé, vous avez peut-être remarqué qu'il manque des valeurs dans certaines colonnes de cet ensemble de données. Les valeurs manquantes sont codées comme "NA" dans R. Vous l'avez peut-être déjà vu dans les sorties précédentes, mais la colonne "Zone" des données "Qualité de l'air" comporte 37 valeurs manquantes. Ce n'est pas un problème avec la fonction "résumé", car elle résume entre autres le nombre de valeurs manquantes dans les données.
 
 ```{r sum50, exercise=TRUE}
 summary(airquality$Ozone)
 
 ```
-Mais regardez ce qui se passe avec les fonctions mean (moyenne), min, max et median (médiane).
+Mais regardez ce qui se passe avec les fonctions moyenne, min, max et médiane.
 
 ```{r sum5, exercise=TRUE}
 mean(airquality$Ozone)
@@ -419,17 +419,17 @@ max(airquality$Ozone)
 median(airquality$Ozone)
 ```
 
-S'il manque des valeurs, ces fonctions nous indiquent par défaut qu'elles ne peuvent pas déterminer la valeur de la moyenne, du minimum, du maximum et de la médiane. 
-Malheureusement, dans R, différentes fonctions traitent les valeurs manquantes de différentes manières, ce qui peut parfois sembler un peu incohérent. Certaines fonctions, comme "summary", suppriment automatiquement les valeurs manquantes et calculent les résultats en ignorant ces valeurs. D'autres fonctions, comme "mean", doivent être explicitement informées de la manière de traiter les valeurs manquantes. Pour que la fonction "mean" calcule la moyenne en ignorant les valeurs manquantes, nous devons ajouter un argument supplémentaire "na.rm=TRUE", indiquant à R de supprimer les valeurs manquantes (NA).
+S'il manque des valeurs, ces fonctions nous indiquent par défaut qu'elles ne peuvent pas déterminer la valeur de la moyenne, du min, du max et de la médiane. 
+Malheureusement, dans R, les différentes fonctions traitent les valeurs manquantes de différentes manières, ce qui peut parfois sembler un peu incohérent. Certaines fonctions, comme "summary", suppriment automatiquement les valeurs manquantes et calculent les résultats en ignorant ces valeurs. D'autres fonctions, comme "mean", doivent être explicitement informées de la manière de traiter les valeurs manquantes. Pour que la fonction "mean" calcule la moyenne en ignorant les valeurs manquantes, nous devons ajouter un argument supplémentaire "na.rm=TRUE", indiquant à R de supprimer les valeurs manquantes (NA).
 
 ```{r sum6, exercise=TRUE}
 mean(airquality$Ozone,na.rm=TRUE)
 ```
 
 
-## Mauvais utilisation des fonctions
+## Application incorrecte des fonctions
 
-Si nous essayions d'utiliser la fonction `mean` sur la colonne "mois", nous verrions des résultats assez étranges :
+Si nous essayions d'utiliser la fonction de moyenne sur la colonne "mois", nous verrions des résultats légèrement étranges :
 ```{r sum7, exercise=TRUE}
 mean(airquality$Month)
 ```
@@ -444,7 +444,7 @@ median(airquality$Month)
 
 Parfois, les choses en R peuvent être un peu incohérentes ! 
 
-C'est l'une des raisons pour lesquelles un grand nombre de personnes utilisent des fonctions et des packages dans R à partir de ce que l'on appelle le "tidyverse", plutôt que d'utiliser R sans package additionnel. 
+C'est l'une des raisons pour lesquelles un grand nombre de personnes utilisent des fonctions et des packages dans R à partir de ce que l'on appelle le "tidyverse", plutôt que d'utiliser "Base" R (qui est R sous la forme qu'il a lorsqu'il est téléchargé). 
 
 L'objectif du tidyverse est que tous les composants partagent une conception, une philosophie, une grammaire et des structures de données communes, afin d'éviter les incohérences comme dans l'exemple précédent. Une grande partie de ce cours suivra les fonctions et les styles du tidyverse, en particulier les prochaines sessions sur les graphiques en utilisant `ggplot2` et la manipulation des données en utilisant `dplyr`.  
 
@@ -452,55 +452,56 @@ Nous en apprendrons plus à ce sujet au fur et à mesure de la progression du co
 
 ## Aide
 
-Il existe un menu d'aide R pour chaque fonction du langage R. Dans R, vous pouvez obtenir cette aide en utilisant un point d'interrogation suivi du nom de la fonction. 
+Il existe un menu d'aide R étendu pour chaque fonction dans R. Dans R, vous pouvez obtenir de l'aide en utilisant un point d'interrogation suivi du nom de la fonction. 
 
 ```{r example2, exercise=TRUE}
 ?mean
 ```
 
 
-(Notez que le formatage ne s'intègre pas particulièrement bien dans ce cahier interactif ! Vous pouvez consulter une version mieux formatée de cette aide sur le site web de la documentation R :https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean). 
+(Notez que le formatage ne s'intègre pas particulièrement bien dans ce cahier interactif ! Vous pouvez consulter une version mieux formatée de cette aide sur le site web de la documentation R :http://larmarange.github.io/analyse-R/ou-trouver-de-l-aide.html). 
 
-Il y a toujours des exemples d'utilisation pour chaque fonction, qui sont souvent plus utiles que les menus d'aide eux-mêmes. Vous pouvez les voir avec la fonction `example()`.
+Il y a toujours des exemples travaillés avec chaque fonction, qui sont souvent plus utiles que les menus d'aide eux-mêmes. Cela peut être trouvé en utilisant `exemple()`.
 
 
 ```{r example, exercise=TRUE}
 example(mean)
 ```
+Mais ? et ```example``` ne fonctionnent que si vous connaissez déjà le nom de la fonction !
 
-Mais `?`et `example()` ne fonctionnent que si vous connaissez déjà le nom de la fonction !
+Le menu d'aide de R est rédigé dans une optique très technique et est très utile une fois que vous vous êtes familiarisé avec R. Cependant, il n'est généralement pas très utile comme outil d'apprentissage pour les nouveaux utilisateurs, car souvent vous ne savez pas quelle fonction vous devez utiliser et les résultats de recherche peuvent être écrasants pour des termes simples. La ressource numéro un pour presque tous les programmeurs R est quelque chose dont vous avez peut-être déjà entendu parler : Google.
+https://www.google.com/search?q=Comment+calculer+une+moyenne+en+R&rlz=1C1RLNS_frBF792BF794&oq=Comment+calculer+une+moyenne+en+R&aqs=chrome..69i57j69i60.873j0j15&sourceid=chrome&ie=UTF-8
 
-Le menu d'aide de R est rédigé dans une optique très technique et est très utile une fois que vous vous êtes familiarisé avec R. Cependant, il n'est généralement pas très utile comme outil d'apprentissage pour les nouveaux utilisateurs, car souvent vous ne savez pas quelle fonction vous devez utiliser et chercher dans l'aide de R peut rapidement être frustrant meme pour des termes simples. La ressource numéro un pour presque tous les programmeurs R est quelque chose dont vous avez peut-être déjà entendu parler : Google.
-https://www.google.co.uk/search?q=Comment+calculer+une+moyenne+avec+R
+À aucun moment de la programmation, on ne s'attend à ce que vous vous souveniez de tout d'un coup - reportez-vous aux exemples précédents sur lesquels vous avez travaillé, ou cherchez de l'aide, chaque fois que vous êtes bloqué. Et n'hésitez pas à nous demander de l'aide à n'importe quel moment du cours si vous n'êtes pas clair sur certains points ou si vous êtes bloqué sur les exercices.
 
-À aucun moment lorsque vous ecrivez du code R, on ne s'attend à ce que vous vous souveniez de tout d'un coup - reportez-vous aux exemples précédents sur lesquels vous avez travaillé, ou cherchez de l'aide lorsque que vous êtes bloqué. Et n'hésitez pas à nous demander de l'aide à n'importe quel moment du cours si vous n'êtes pas clair sur certains points ou si vous êtes bloqué sur les exercices.
-
-Il existe de nombreuses ressources en ligne sur R, qui peuvent être de qualité variable ou d'une utilité différente selon votre niveau de connaissances et d'expérience. Tout au long du cours, nous essaierons de mettre en évidence les ressources spécifiques que nous pensons utiles pour vous aider à apprendre.
+Il existe de nombreuses ressources en ligne pour la R, qui peuvent être de qualité variable ou d'une utilité différente selon votre niveau de connaissances et d'expérience. Tout au long du cours, nous essaierons de mettre en évidence les ressources spécifiques que nous pensons utiles pour vous aider à apprendre.
 
 
 ## Ressources
 
-Comme mentionné, il existe de nombreuses ressources en ligne couvrant des sujets similaires à cette première introduction de manière plus détaillée. Il s'agit pour la plupart de choses que vous apprendrez davantage, ou dont vous ne réaliserez l'utilité, qu'une fois que vous aurez commencé à utiliser R plus fréquemment. Voici quelques suggestions de lectures complémentaires:
+Comme mentionné, il existe de nombreuses ressources en ligne couvrant des sujets similaires à cette première introduction de manière très détaillée. Il s'agit pour la plupart de choses que vous apprendrez davantage, ou dont vous ne réaliserez l'utilité, qu'une fois que vous aurez commencé à utiliser R plus fréquemment. Voici trois suggestions de lectures complémentaires, classées par niveau de difficulté, qui récapitulent en partie le même contenu mais qui, dans tous les cas, approfondissent un peu plus certains domaines.
 
-<a href="https://bookdown.org/ael/rexplor/chap1-3.html" target="_blank">R comme calculatrice</a> 
+Facile :
 
+<a href="https://juba.github.io/tidyverse/01-presentation.html" target="_blank">Présentation de R et Rstudio</a>  
+Nous presente en general R, les avantages de R, Rstudio et tidyverse. Elle nous permet aussi de telecharger R et Rstudio sous PC, Mac et Linux.
 
-<a href="https://juba.github.io/tidyverse/02-prise_en_main.html" target="_blank">Introduction a R et au tidyverse - Prise en main</a>  
+Médium:
 
+<a href="https://juba.github.io/tidyverse/02-prise_en_main.html" target="_blank">Prise en main</a>  
+Couvre davantage de types de structures de données dans R que cette introduction, mais à un rythme assez lent
 
-Un peu plus avance: 
-<a href="http://egallic.fr/Enseignement/R/m1_stat_eco_logiciel_R.pdf" target="_blank">Logiciel R et programmation</a>  
+Dur :
+<a href="https://juba.github.io/tidyverse/index.html" target="_blank">L'introduction "officielle" à R </a>. Elle contient de nombreux détails techniques sur les différents types d'objets et les structures internes de R. Elle couvre plus ou moins tout ce que vous pourriez avoir besoin de savoir, mais une grande partie de ce que vous n'avez pas besoin de savoir ou de vous rappeler pour commencer votre voyage dans R, tandis qu'une grande partie de ce qui est mentionné a été largement remplacé par des ajouts utiles.
 
-
-
-## Quiz
+## Test
 
 *Question 1*
 ```{r Q1, echo=FALSE}
 question("Laquelle des définitions suivantes est celle d'un objet dans R",
-  answer("Un objet est une structure qui peut contenir des valeurs, des données ou des graphiques",correct=TRUE),
-  answer("Un objet est une une une commande utilisée pour effectuer une tâche particulière",message = "Non, ca c'est une 'fonction' !"),
-  answer("Un objet fournit l'ensemble des commandes R que vous utilisez'",message = "Non, ca c'est un 'script'"),
+  answer("Un objet est une structure qui peut contenir des valeurs, des données ou des tracés",correct=TRUE),
+  answer("Un objet est une déclaration utilisée pour effectuer une tâche particulière",message = "C'est une 'fonction'"),
+  answer("Un objet fournit les commandes utilisées dans R'"),
          allow_retry=TRUE)
 
 ```
@@ -510,11 +511,11 @@ question("Laquelle des définitions suivantes est celle d'un objet dans R",
 *Question 2*
 
 ```{r Q2, echo=FALSE}
-question("Sélectionnez tous les reponses suivantes qui pourraient constituer un nom d'objet R valide pour des donnees sur les tremblements de terre",
+question("Sélectionnez tous les éléments suivants qui pourraient constituer un nom d'objet valable pour certaines données sur les tremblements de terre dans R",
   answer("EarthquakeData",correct = TRUE),
    answer("earthquakedata",correct = TRUE),
   answer("Earthquake Data",message="Aucun espace n'est autorisé."),
-  answer("uRtHkWaKeS",correct = TRUE,message="Ce n'est pas parce qu'un nom est valide, comme uRtHkWaKeS, que c'est une bonne idée de nommer ainsi nos données!"),
+  answer("uRtHkWaKeS",correct = TRUE,message="Ce n'est pas parce qu'un nom est valable, comme uRtHkWaKeS, que c'est une bonne idée de nommer ainsi nos données!"),
   answer("2020earthquakes",message="Ne peut pas commencer par un numéro."),
   answer("2020_earthquakes",message="Ne peut pas commencer par un numéro"),
   answer("Earthquakes_2020",correct = TRUE),
@@ -534,6 +535,9 @@ question("Laquelle des affirmations suivantes est correcte",
          allow_retry=TRUE)
 
 ```
+
+
+
 
 
 Il existe un ensemble de données dans R appelé "quakes". Ces données indiquent la latitude, la longitude, la profondeur et la magnitude des tremblements de terre qui se sont produits dans l'océan autour des Fidji depuis 1964, ainsi que le nombre de stations différentes qui ont signalé le tremblement de terre.
@@ -573,10 +577,12 @@ question("Quelle commande m'a donné le résultat indiqué ci-dessus ?",
 ```
 
 
+
+
 ## Exercices
 
 ### Question 1:
-J'essaie d'utiliser R comme une calculatrice et je reçois une erreur. Pouvez-vous repérer mon erreur et faire que le code marche ?
+J'essaie d'utiliser R comme calculatrice et je reçois une erreur. Pouvez-vous repérer mon erreur et mettre à jour le code ?
 ```{r ex1, exercise=TRUE}
 
 (42-5/(88+6)
@@ -594,7 +600,7 @@ DT::datatable(quakes)
 
 
 ### Question 2a
-Ecrire une commande pour déterminer le tremblement de terre ayant eu la le plus grand magnitude (`mag`) enregistré ?
+Ecrire une commande pour déterminer le plus grand tremblement de terre de magnitude (`mag`) enregistré ?
 
 ```{r ex2, exercise=TRUE}
 
@@ -610,7 +616,7 @@ Ecrire une commande pour déterminer la plus petite profondeur (`depth`) sous la
 
 
 ### Question 2c
-Je voudrais obtenir l'écart type de la colonne magnitude pour l'ensemble des tremblements de terre collectes dans les données `quakes`. Voyez si vous pouvez trouver la fonction de l'écart type dans R (nous ne l'avons pas encore mentionné dans le manuel de cours) et appliquez-la ensuite à la colonne correspondante
+Je voudrais obtenir l'écart type de la colonne de magnitude des tremblements de terre par rapport à l'ensemble des données `quakes`. Voyez si vous pouvez trouver la fonction de l'écart type dans R (nous ne l'avons pas encore mentionné dans le manuel de cours) et appliquez-la ensuite à la colonne correspondante
 ```{r ex4, exercise=TRUE}
 
 ```
@@ -625,7 +631,7 @@ J'utilise à nouveau les données de `airquality` et je suis maintenant intéres
 
 
 ### Question 4:
-Un exercice dont je suis sûr que vous vous souvenez de l'école est de résoudre une équation quadratique en utilisant la formule $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$.
+Une tâche dont je suis sûr que vous vous souvenez de l'école est de résoudre une équation quadratique en utilisant la formule $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$.
 Ecrivez un code R pour trouver les deux valeurs de x lorsque $x^2-9x+19=0$ . 
 
 Pour rappel, dans la formule de l'équation quadratique de cet exemple particulier, `a` serait 1 ; `b` serait -9 et `c` serait 19
